@@ -1,2 +1,0 @@
-# miniproject
-for collage

@@ -45,7 +45,7 @@ sudo apt install python3-tk
 ### 1. Clone or Download the Project
 
 ```bash
-git clone <your-repo-url> smart_light_system
+git clone <https://github.com/priyanshugusain2004/Smart_Light_System.git> smart_light_system
 cd smart_light_system
 ```
 

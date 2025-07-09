@@ -1,38 +1,44 @@
 
-# 🧠 Smart Light System using Hand Gestures and Human Presence Detection
+# Smart Light System using Hand Gestures and Human Presence Detection
 
-This Python project uses **MediaPipe**, **OpenCV**, and **Tkinter** to create an intelligent smart light system that:
+This Python project integrates **MediaPipe**, **OpenCV**, and **Tkinter** to create an intelligent light control system that detects human presence and uses hand gestures to control the brightness of a virtual smart bulb.
 
-- Detects **human presence** using pose detection.
-- Detects **hand gestures** (raised fingers) to control the **intensity of a smart bulb**.
-- Provides a **GUI-based bulb visualization** in real-time.
+It provides real-time webcam input processing and a GUI-based visualization of the bulb’s state and intensity.
 
 ---
 
-## 🔧 Features
+## Features
 
-- 🧍 **Automatic On/Off**: The light turns on when a person is detected and turns off when they leave the frame.
-- ✋ **Gesture-Based Intensity Control**:
+- **Automatic On/Off Control**  
+  The light turns on when a human is detected in the frame and turns off automatically when the person leaves.
+
+- **Gesture-Based Intensity Adjustment**  
+  The system recognizes hand gestures to set brightness levels:
   - 1 finger: Low
-  - 2 fingers: Mid
+  - 2 fingers: Medium
   - 3 fingers: High
-  - 4 fingers: Highest
-- 🖼️ **Live camera feed** with pose and hand landmark drawing.
-- 💡 GUI interface with a colored bulb showing the current light state.
+  - 4 fingers: Maximum
+
+- **Real-Time Webcam Feed**  
+  Displays a live video feed with pose and hand landmark annotations.
+
+- **Interactive Bulb Display**  
+  A Tkinter-based interface displays a digital bulb that changes color based on the current intensity level.
 
 ---
 
-## 📦 Requirements
+## Requirements
 
-Install the following dependencies **inside a virtual environment** (`.venv`) or globally:
+Ensure you have Python installed, then install the required packages using pip:
 
 ```bash
 pip install opencv-python mediapipe
 ```
 
-Additionally, install **Tkinter** if it's not already installed:
+Install **Tkinter** if not already installed:
 
-**Ubuntu/Debian:**
+**For Ubuntu/Debian-based systems:**
+
 ```bash
 sudo apt update
 sudo apt install python3-tk
@@ -40,16 +46,16 @@ sudo apt install python3-tk
 
 ---
 
-## 🚀 How to Run the Project
+## Getting Started
 
-### 1. Clone or Download the Project
+### 1. Clone the Repository
 
 ```bash
-git clone <https://github.com/priyanshugusain2004/Smart_Light_System.git> smart_light_system
-cd smart_light_system
+git clone https://github.com/priyanshugusain2004/Smart_Light_System.git
+cd Smart_Light_System
 ```
 
-### 2. Create and Activate Virtual Environment (Optional but Recommended)
+### 2. (Optional) Set Up a Virtual Environment
 
 ```bash
 python3 -m venv .venv
@@ -62,13 +68,13 @@ source .venv/bin/activate
 pip install opencv-python mediapipe
 ```
 
-And if not already installed:
+If needed:
 
 ```bash
 sudo apt install python3-tk
 ```
 
-### 4. Run the Script
+### 4. Run the Application
 
 ```bash
 python main.py
@@ -76,67 +82,66 @@ python main.py
 
 ---
 
-## 🖥️ Application Overview
+## How It Works
 
-### 🎥 Camera Input:
-- Uses your webcam to continuously read frames.
-- Flips the camera feed to act like a mirror.
+### Camera Input  
+Uses your webcam to capture video in real-time and flips it to behave like a mirror.
 
-### 🧍 Human Detection:
-- Uses **MediaPipe Pose** to detect a person in the frame.
-- When a human is detected, the system assumes someone is present and turns the light to "Low".
+### Human Detection  
+Leverages MediaPipe Pose to detect human presence. When a person enters the frame, the light automatically turns on at low intensity.
 
-### ✋ Gesture Recognition:
-- Uses **MediaPipe Hands** to detect how many fingers are raised.
-- Maps number of raised fingers to light intensity:
-  - 1 finger → Low
-  - 2 fingers → Mid
-  - 3 fingers → High
-  - 4 fingers → Highest
+### Gesture Recognition  
+Uses MediaPipe Hands to detect raised fingers. Based on the number of fingers shown, the light intensity changes as follows:
+- 1 finger → Low (Cream)
+- 2 fingers → Medium (Yellow)
+- 3 fingers → High (Orange)
+- 4 fingers → Maximum (Red)
 
-### 💡 GUI Bulb Display:
-- Built with **Tkinter**.
-- Shows a large bulb with different fill colors based on the light intensity:
-  - Gray = Off
-  - Cream = Low
-  - Yellow = Mid
-  - Orange = High
-  - Red = Highest
+If no hand or person is detected, the bulb turns off (Gray).
+
+### GUI Bulb Display  
+A simple Tkinter interface shows a color-changing bulb that visually represents the light’s current intensity level.
 
 ---
 
-## 🛑 Exit the App
+## Exiting the Application
 
-- Press **`q`** on the camera window to safely stop the application.
-
----
-
-## 📷 Troubleshooting
-
-- **No webcam feed?**
-  - Ensure your camera is not being used by another application.
-  - Try changing the index in `cv2.VideoCapture(1)` to `cv2.VideoCapture(0)`.
-
-- **Getting `ModuleNotFoundError: tkinter`?**
-  - Run: `sudo apt install python3-tk`
-
-- **Feedback manager or EGL Warnings?**
-  - These are internal library logs. Safe to ignore unless the app crashes.
+Press `q` in the camera window to exit the program safely.
 
 ---
 
-## 📁 File Structure
+## Troubleshooting
+
+- **Camera feed not showing?**  
+  Ensure the camera isn't being used by another application. Try switching the camera index:
+  ```python
+  cv2.VideoCapture(0) → cv2.VideoCapture(1)
+  ```
+
+- **Getting a `tkinter` module error?**  
+  Install Tkinter using your package manager:
+  ```bash
+  sudo apt install python3-tk
+  ```
+
+- **Seeing EGL or feedback warnings?**  
+  These are internal logs and can typically be ignored unless they cause the application to crash.
+
+---
+
+## File Structure
 
 ```
-smart_light_system/
-├── main.py         # Main Python script
-├── README.md       # Project documentation
-└── .venv/          # (Optional) Virtual environment
+Smart_Light_System/
+├── main.py         # Main application script
+├── README.md       # Documentation file
+└── .venv/          # Optional: Virtual environment folder
 ```
 
 ---
 
-## 👨‍💻 Author
+## Author
 
 **Priyanshu Gusain**  
-Feel free to modify or extend this project for learning or personal use!
+A BCA student exploring real-world applications of computer vision and AI in interactive systems.  
+Feel free to fork or contribute to this project. It’s built for experimentation and learning.
